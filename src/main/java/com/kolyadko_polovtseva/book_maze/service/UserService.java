@@ -1,0 +1,15 @@
+package com.kolyadko_polovtseva.book_maze.service;
+
+
+import com.kolyadko_polovtseva.book_maze.domain.User;
+import com.kolyadko_polovtseva.book_maze.service.exception.ServiceException;
+
+/**
+ * Created by nadez on 10/22/2016.
+ */
+public interface UserService {
+
+    void save(User user) throws ServiceException;
+
+    User find(String login, String password) throws ServiceException;
+}
