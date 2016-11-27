@@ -14,5 +14,6 @@
         <property name="hibernate.enable_lazy_load_no_trans">true</property>
 
         <mapping class="com.kolyadko_polovtseva.book_maze.domain.User" />
+        <mapping class="com.kolyadko_polovtseva.book_maze.domain.UserRole" />
     </session-factory>
 </hibernate-configuration>

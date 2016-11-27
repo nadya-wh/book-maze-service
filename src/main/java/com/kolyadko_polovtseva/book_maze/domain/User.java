@@ -1,11 +1,10 @@
 package com.kolyadko_polovtseva.book_maze.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,12 +14,14 @@ import java.util.Date;
 
 @Entity
 @Table(name = "user")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "password"})
 public class User implements Serializable{
 
     @Id
     @Column(name = "login")
     private String login;
+
+    @JsonProperty(value = "password")
     @Column(name = "password")
     private String password;
     @Column(name = "library_id")
@@ -31,6 +32,11 @@ public class User implements Serializable{
     private String lastName;
     @Column(name = "birth_date")
     private Date birthDate;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private UserRole userRole;
 
     public String getLogin() {
         return login;
@@ -80,6 +86,36 @@ public class User implements Serializable{
         this.birthDate = birthDate;
     }
 
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
+
+    public User() {
+    }
+
+    public User(String login, String password, String libraryId, String firstName,
+                String lastName, Date birthDate) {
+        this.login = login;
+        this.password = password;
+        this.libraryId = libraryId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+    }
+
+    @JsonProperty(value = "roleName")
+    public String getRole() {
+        if (userRole != null) {
+            return userRole.getRoleName();
+        } else {
+            return "";
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -105,5 +141,18 @@ public class User implements Serializable{
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", libraryId='" + libraryId + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                ", userRole=" + userRole +
+                '}';
     }
 }

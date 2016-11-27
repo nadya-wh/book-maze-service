@@ -9,7 +9,7 @@ import com.kolyadko_polovtseva.book_maze.service.exception.ServiceException;
  */
 public interface UserService {
 
-    void save(User user) throws ServiceException;
+    void save(User user, String role) throws ServiceException;
 
     User find(String login, String password) throws ServiceException;
 }

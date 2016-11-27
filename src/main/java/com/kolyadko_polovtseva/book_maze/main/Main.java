@@ -1,5 +1,7 @@
 package com.kolyadko_polovtseva.book_maze.main;
 
+import com.kolyadko_polovtseva.book_maze.controller.UserController;
+import com.kolyadko_polovtseva.book_maze.service.impl.UserServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -9,6 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 
 @SpringBootApplication
+@ComponentScan(basePackageClasses = UserController.class)
 public class Main {
 
     public static void main(String[] args) {
