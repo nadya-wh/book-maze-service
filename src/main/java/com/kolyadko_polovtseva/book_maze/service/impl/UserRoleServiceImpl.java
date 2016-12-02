@@ -1,6 +1,6 @@
 package com.kolyadko_polovtseva.book_maze.service.impl;
 
-import com.kolyadko_polovtseva.book_maze.domain.UserRole;
+import com.kolyadko_polovtseva.book_maze.entity.UserRole;
 import com.kolyadko_polovtseva.book_maze.service.UserRoleService;
 
 /**

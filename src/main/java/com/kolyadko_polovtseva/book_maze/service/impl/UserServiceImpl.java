@@ -6,8 +6,8 @@ import com.kolyadko_polovtseva.book_maze.dao.UserRoleDAO;
 import com.kolyadko_polovtseva.book_maze.dao.exception.DAOException;
 import com.kolyadko_polovtseva.book_maze.dao.impl.UserDAOImpl;
 import com.kolyadko_polovtseva.book_maze.dao.impl.UserRoleDAOImpl;
-import com.kolyadko_polovtseva.book_maze.domain.User;
-import com.kolyadko_polovtseva.book_maze.domain.UserRole;
+import com.kolyadko_polovtseva.book_maze.entity.User;
+import com.kolyadko_polovtseva.book_maze.entity.UserRole;
 import com.kolyadko_polovtseva.book_maze.service.UserService;
 import com.kolyadko_polovtseva.book_maze.service.exception.ServiceException;
 

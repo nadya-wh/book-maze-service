@@ -1,4 +1,4 @@
-package com.kolyadko_polovtseva.book_maze.domain;
+package com.kolyadko_polovtseva.book_maze.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
