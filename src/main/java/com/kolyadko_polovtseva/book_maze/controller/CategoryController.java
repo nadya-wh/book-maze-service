@@ -32,7 +32,12 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/categories")
-    public ResponseEntity<List<Category>> signUp() {
+    public ResponseEntity<List<Category>> findAll() {
+        return new ResponseEntity<>(categoryService.findAll(), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/categories")
+    public ResponseEntity<List<Category>> findAllPost() {
         return new ResponseEntity<>(categoryService.findAll(), HttpStatus.OK);
     }
 }
