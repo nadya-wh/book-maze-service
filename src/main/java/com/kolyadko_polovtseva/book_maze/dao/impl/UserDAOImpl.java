@@ -4,7 +4,7 @@ package com.kolyadko_polovtseva.book_maze.dao.impl;
 import com.kolyadko_polovtseva.book_maze.dao.SessionWrapper;
 import com.kolyadko_polovtseva.book_maze.dao.UserDAO;
 import com.kolyadko_polovtseva.book_maze.dao.exception.DAOException;
-import com.kolyadko_polovtseva.book_maze.domain.User;
+import com.kolyadko_polovtseva.book_maze.entity.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;

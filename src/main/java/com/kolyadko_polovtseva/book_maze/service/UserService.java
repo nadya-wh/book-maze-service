@@ -1,7 +1,7 @@
 package com.kolyadko_polovtseva.book_maze.service;
 
 
-import com.kolyadko_polovtseva.book_maze.domain.User;
+import com.kolyadko_polovtseva.book_maze.entity.User;
 import com.kolyadko_polovtseva.book_maze.service.exception.ServiceException;
 
 /**

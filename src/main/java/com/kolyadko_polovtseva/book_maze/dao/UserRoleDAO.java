@@ -1,7 +1,7 @@
 package com.kolyadko_polovtseva.book_maze.dao;
 
 import com.kolyadko_polovtseva.book_maze.dao.exception.DAOException;
-import com.kolyadko_polovtseva.book_maze.domain.UserRole;
+import com.kolyadko_polovtseva.book_maze.entity.UserRole;
 
 /**
  * Created by nadez on 11/27/2016.

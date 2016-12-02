@@ -1,7 +1,7 @@
 package com.kolyadko_polovtseva.book_maze.controller;
 
-import com.kolyadko_polovtseva.book_maze.domain.User;
-import com.kolyadko_polovtseva.book_maze.domain.UserRole;
+import com.kolyadko_polovtseva.book_maze.entity.User;
+import com.kolyadko_polovtseva.book_maze.entity.UserRole;
 import com.kolyadko_polovtseva.book_maze.service.UserService;
 import com.kolyadko_polovtseva.book_maze.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
