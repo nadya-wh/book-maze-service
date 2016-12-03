@@ -6,6 +6,8 @@ import com.kolyadko_polovtseva.book_maze.service.UserService;
 import com.kolyadko_polovtseva.book_maze.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,11 +29,9 @@ public class UserController {
     private static final Logger logger = LogManager.getLogger(UserController.class);
     public static final String DATE_FORMAT = "MM/dd/yyyy";
 
+    @Autowired
+    @Qualifier("UserServiceImpl")
     private UserService userService;
-
-    public UserController() {
-        userService = UserServiceImpl.getInstance();
-    }
 
     @RequestMapping(method = RequestMethod.POST, value = "/auth")
     public ResponseEntity<User> signIn(@RequestParam(value = "login") String login,
