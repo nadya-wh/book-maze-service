@@ -2,19 +2,43 @@ package com.kolyadko_polovtseva.book_maze.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.sym.Name;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by DaryaKolyadko on 25.11.2016.
  */
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table(name = "author")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "books"})
 public class Author implements Serializable {
+
+    @Id
+    @Column(name = "id_author")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAuthor;
+
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
+
+
+    @JsonProperty("books")
+    @ManyToMany
+    @JoinTable(name = "book_author", joinColumns = {
+            @JoinColumn(name = "author_id_author", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "book_id_book",
+                    nullable = false, updatable = false)})
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinTable(name = "book_author", joinColumns = {
+//            @JoinColumn(name = "author_id_author", nullable = false)},
+//            inverseJoinColumns = {@JoinColumn(name = "book_id_book",
+//                    nullable = false)})
     private Set<Book> books;
 
     public Integer getIdAuthor() {

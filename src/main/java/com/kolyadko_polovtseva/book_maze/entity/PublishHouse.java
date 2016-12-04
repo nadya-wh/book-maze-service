@@ -3,17 +3,28 @@ package com.kolyadko_polovtseva.book_maze.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by DaryaKolyadko on 26.11.2016.
  */
+@Entity
+@Table(name = "publish_house")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PublishHouse implements Serializable {
+
+
+    @Id
+    @Column(name = "id_publish_house")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPublishHouse;
+    @Column(name = "name")
     private String name;
+    @OneToMany
+    @JoinColumn(name = "publish_house_id")
     private Set<Book> books;
 
     public Integer getIdPublishHouse() {
