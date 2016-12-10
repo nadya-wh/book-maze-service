@@ -42,6 +42,13 @@ public class BookController {
         return new ResponseEntity<>(bookService.findByCategory(categoryId), HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/user/books/reserved/mine")
+    public ResponseEntity<List<RegisterRecord>> findReserved(@RequestParam(value = "userId") String token) {
+        User user = new User();
+        user.setLogin(token);
+        return new ResponseEntity<>(registerRecordService.findByUser(user), HttpStatus.OK);
+    }
+
     @RequestMapping(method = RequestMethod.POST, value = "/user/books/reserved")
     public ResponseEntity<RegisterRecord> reserveBook(@RequestParam(value = "book") String bookId,
                                                       @RequestParam(value = "userId") String login,
@@ -69,5 +76,6 @@ public class BookController {
 //    public ResponseEntity<Book> createBook(@RequestParam(value = "bookName") String bookName) {
 //
 //    }
+
 
 }

@@ -6,6 +6,7 @@ import com.kolyadko_polovtseva.book_maze.dao.LibraryBookRepository;
 import com.kolyadko_polovtseva.book_maze.entity.Book;
 import com.kolyadko_polovtseva.book_maze.entity.Category;
 import com.kolyadko_polovtseva.book_maze.entity.LibraryBook;
+import com.kolyadko_polovtseva.book_maze.entity.User;
 import com.kolyadko_polovtseva.book_maze.service.BookService;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,6 +55,7 @@ public class BookServiceImpl implements BookService{
     public LibraryBook findLibraryBook(Book book) {
         return libraryBookRepository.findLibraryBookByBook(book);
     }
+
 
 
 }
