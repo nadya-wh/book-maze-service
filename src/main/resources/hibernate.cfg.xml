@@ -19,5 +19,7 @@
         <mapping class="com.kolyadko_polovtseva.book_maze.entity.Book" />
         <mapping class="com.kolyadko_polovtseva.book_maze.entity.Author" />
         <mapping class="com.kolyadko_polovtseva.book_maze.entity.PublishHouse" />
+        <mapping class="com.kolyadko_polovtseva.book_maze.entity.LibraryBook" />
+        <mapping class="com.kolyadko_polovtseva.book_maze.entity.RegisterRecord" />
     </session-factory>
 </hibernate-configuration>
