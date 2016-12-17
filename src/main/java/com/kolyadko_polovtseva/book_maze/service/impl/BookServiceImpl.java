@@ -6,7 +6,8 @@ import com.kolyadko_polovtseva.book_maze.dao.LibraryBookRepository;
 import com.kolyadko_polovtseva.book_maze.entity.Book;
 import com.kolyadko_polovtseva.book_maze.entity.Category;
 import com.kolyadko_polovtseva.book_maze.entity.LibraryBook;
-import com.kolyadko_polovtseva.book_maze.entity.User;
+import com.kolyadko_polovtseva.book_maze.search.LuceneIndexBuilder;
+import com.kolyadko_polovtseva.book_maze.search.LuceneSearch;
 import com.kolyadko_polovtseva.book_maze.service.BookService;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +29,13 @@ public class BookServiceImpl implements BookService{
         this.bookRepository = bookRepository;
         this.libraryBookRepository = libraryBookRepository;
         this.categoryRepository = categoryRepository;
+        LuceneIndexBuilder.buildIndex(findAll());
+        LuceneSearch.search("The Fault in Our Stars");
+    }
+
+    @Override
+    public Iterable<Book> findAll() {
+        return bookRepository.findAll();
     }
 
     @Override
@@ -56,6 +64,11 @@ public class BookServiceImpl implements BookService{
         return libraryBookRepository.findLibraryBookByBook(book);
     }
 
+    @Override
+    public Iterable<Book> search(String query) {
+        List<Integer> ids = LuceneSearch.search(query);
+        return bookRepository.findAll(ids);
+    }
 
 
 }

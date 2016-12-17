@@ -3,7 +3,6 @@ package com.kolyadko_polovtseva.book_maze.service;
 import com.kolyadko_polovtseva.book_maze.entity.Book;
 import com.kolyadko_polovtseva.book_maze.entity.Category;
 import com.kolyadko_polovtseva.book_maze.entity.LibraryBook;
-import com.kolyadko_polovtseva.book_maze.entity.User;
 
 import java.util.List;
 
@@ -12,11 +11,13 @@ import java.util.List;
  */
 public interface BookService {
 
+    Iterable<Book> findAll();
     List<Book> findByCategory(Category category);
     List<Book> findByCategory(Integer categoryId);
     Book find(Integer bookId);
     LibraryBook findLibraryBook(String bookId);
     LibraryBook findLibraryBook(Book book);
 
+    Iterable<Book> search(String query);
 
 }

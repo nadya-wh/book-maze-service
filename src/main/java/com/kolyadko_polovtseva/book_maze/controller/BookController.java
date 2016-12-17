@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -73,6 +75,14 @@ public class BookController {
         return new ResponseEntity<>(new RegisterRecord(), HttpStatus.BAD_REQUEST);
     }
 
+
+    @RequestMapping(method = RequestMethod.POST, value = "/books/search")
+    public ResponseEntity<List<Book>> search(@RequestParam(value = "query") String query) {
+        Iterable<Book> books = bookService.search(query);
+        List<Book> bookList = new ArrayList<>();
+        books.forEach(bookList::add);
+        return new ResponseEntity<>(bookList, HttpStatus.OK);
+    }
 //    public ResponseEntity<Book> createBook(@RequestParam(value = "bookName") String bookName) {
 //
 //    }

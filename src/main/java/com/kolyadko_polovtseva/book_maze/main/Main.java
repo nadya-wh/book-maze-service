@@ -1,10 +1,13 @@
 package com.kolyadko_polovtseva.book_maze.main;
 
 import com.kolyadko_polovtseva.book_maze.controller.UserController;
+import com.kolyadko_polovtseva.book_maze.search.LuceneUtil;
+import com.kolyadko_polovtseva.book_maze.service.BookService;
 import com.kolyadko_polovtseva.book_maze.service.CategoryService;
 import com.kolyadko_polovtseva.book_maze.service.impl.CategoryServiceImpl;
 import com.kolyadko_polovtseva.book_maze.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,9 +25,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("com.kolyadko_polovtseva.book_maze.entity")
 public class Main {
 
-
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
-
+        new LuceneUtil().prepare();
     }
 }
