@@ -76,7 +76,7 @@ public class BookController {
     }
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/books/search")
+    @RequestMapping(method = RequestMethod.GET, value = "/books/search")
     public ResponseEntity<List<Book>> search(@RequestParam(value = "query") String query) {
         Iterable<Book> books = bookService.search(query);
         List<Book> bookList = new ArrayList<>();
