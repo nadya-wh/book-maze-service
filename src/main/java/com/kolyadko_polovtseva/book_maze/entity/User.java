@@ -19,7 +19,6 @@ public class User implements Serializable{
 
     @Id
     @Column(name = "login")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String login;
 
     @JsonProperty(value = "password")
