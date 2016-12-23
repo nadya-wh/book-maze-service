@@ -38,6 +38,9 @@ public class User implements Serializable{
     @Column(name = "birth_date")
     private Date birthDate;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "role_id")
@@ -97,6 +100,14 @@ public class User implements Serializable{
 
     public void setUserRole(UserRole userRole) {
         this.userRole = userRole;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public User() {
