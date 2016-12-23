@@ -1,6 +1,7 @@
 package com.kolyadko_polovtseva.book_maze.service.impl;
 
 import com.kolyadko_polovtseva.book_maze.dao.RegisterRecordRepository;
+import com.kolyadko_polovtseva.book_maze.entity.LibraryBook;
 import com.kolyadko_polovtseva.book_maze.entity.RegisterRecord;
 import com.kolyadko_polovtseva.book_maze.entity.User;
 import com.kolyadko_polovtseva.book_maze.service.RegisterRecordService;
@@ -32,5 +33,10 @@ public class RegisterRecordServiceImpl implements RegisterRecordService {
     @Override
     public List<RegisterRecord> findByUser(User user) {
         return registerRecordRepository.findRegisterRecordsByUser(user);
+    }
+
+    @Override
+    public Boolean isBookAvailable(LibraryBook libraryBook) {
+        return registerRecordRepository.countWhereWasReturnedFalseAAndIdLibraryBook(libraryBook) == 0;
     }
 }

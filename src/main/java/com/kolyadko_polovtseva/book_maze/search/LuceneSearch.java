@@ -31,13 +31,13 @@ public class LuceneSearch {
 
     private static final String LUCENE_INDEX_DIRECTORY = "lucene";
 
-    public static List<Integer> search(String searchString) {
+    public static List<Integer> search(String searchString, String field) {
         TopDocs results = null;
         List<Integer> ids = new ArrayList<>();
         try (IndexReader reader = DirectoryReader.open(FSDirectory.open(Paths.get(LUCENE_INDEX_DIRECTORY)))) {
             IndexSearcher searcher = new IndexSearcher(reader);
             Analyzer analyzer = new StandardAnalyzer();
-            QueryParser queryParser = new QueryParser("name", analyzer);
+            QueryParser queryParser = new QueryParser(field, analyzer);
             Query query = queryParser.parse(searchString);
             results = searcher.search(query, 10);
             for (int i = 0; i < results.totalHits; i++) {

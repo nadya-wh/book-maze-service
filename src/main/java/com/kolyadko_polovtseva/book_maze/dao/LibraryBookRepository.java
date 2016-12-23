@@ -10,4 +10,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface LibraryBookRepository extends CrudRepository<LibraryBook, String> {
 
     LibraryBook findLibraryBookByBook(Book book);
+
 }

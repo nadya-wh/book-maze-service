@@ -35,6 +35,8 @@ public class RegisterRecord implements Serializable {
     @Column(name = "return_deadline")
     private Date returnDeadline;
 
+    @Column(name = "was_returned")
+    private Boolean wasReturned;
 
     public Integer getIdRegister() {
         return idRegister;
@@ -74,5 +76,13 @@ public class RegisterRecord implements Serializable {
 
     public void setReturnDeadline(Date returnDeadline) {
         this.returnDeadline = returnDeadline;
+    }
+
+    public Boolean getWasReturned() {
+        return wasReturned;
+    }
+
+    public void setWasReturned(Boolean wasReturned) {
+        this.wasReturned = wasReturned;
     }
 }

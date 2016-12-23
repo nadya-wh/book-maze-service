@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import com.kolyadko_polovtseva.book_maze.entity.Book;
+import com.kolyadko_polovtseva.book_maze.util.AuthorUtil;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.*;
 import org.apache.lucene.index.IndexWriter;
@@ -41,6 +42,10 @@ public class LuceneIndexBuilder {
                 document.add(nameField);
                 Field descriptionField = new TextField("description", book.getDescription(), Field.Store.YES);
                 document.add(descriptionField);
+                Field categoryField = new TextField("category", book.getCategory().getName(), Field.Store.YES);
+                document.add(categoryField);
+                Field authorField = new TextField("author", AuthorUtil.toString(book.getAuthors()), Field.Store.YES);
+                document.add(authorField);
                 //add the document to writer
                 writer.addDocument(document);
             }

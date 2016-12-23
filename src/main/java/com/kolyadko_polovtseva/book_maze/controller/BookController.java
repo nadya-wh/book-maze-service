@@ -57,10 +57,13 @@ public class BookController {
                                                       @RequestParam(value = "token", defaultValue = "") String token) {
         User user = new User();
         user.setLogin(login);
-//        Book book = bookService.find(bookId);
         LibraryBook libraryBook = bookService.findLibraryBook(bookId);
         if (libraryBook == null) {
             return new ResponseEntity<>(new RegisterRecord(), HttpStatus.FORBIDDEN);
+        }
+
+        if (!registerRecordService.isBookAvailable(libraryBook)) {
+            return new ResponseEntity<>(new RegisterRecord(), HttpStatus.CONFLICT);
         }
 
         RegisterRecord registerRecord = new RegisterRecord();
@@ -77,15 +80,13 @@ public class BookController {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/books/search")
-    public ResponseEntity<List<Book>> search(@RequestParam(value = "query") String query) {
-        Iterable<Book> books = bookService.search(query);
+    public ResponseEntity<List<Book>> search(@RequestParam(value = "query") String query,
+                                            @RequestParam(value = "field", defaultValue = "name") String field) {
+        Iterable<Book> books = bookService.search(query, field);
         List<Book> bookList = new ArrayList<>();
         books.forEach(bookList::add);
         return new ResponseEntity<>(bookList, HttpStatus.OK);
     }
-//    public ResponseEntity<Book> createBook(@RequestParam(value = "bookName") String bookName) {
-//
-//    }
 
 
 }

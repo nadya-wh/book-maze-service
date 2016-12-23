@@ -30,7 +30,6 @@ public class BookServiceImpl implements BookService{
         this.libraryBookRepository = libraryBookRepository;
         this.categoryRepository = categoryRepository;
         LuceneIndexBuilder.buildIndex(findAll());
-        LuceneSearch.search("The Fault in Our Stars");
     }
 
     @Override
@@ -65,10 +64,11 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public Iterable<Book> search(String query) {
-        List<Integer> ids = LuceneSearch.search(query);
+    public Iterable<Book> search(String query, String field) {
+        List<Integer> ids = LuceneSearch.search(query, field);
         return bookRepository.findAll(ids);
     }
+
 
 
 }

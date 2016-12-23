@@ -18,6 +18,6 @@ public interface BookService {
     LibraryBook findLibraryBook(String bookId);
     LibraryBook findLibraryBook(Book book);
 
-    Iterable<Book> search(String query);
+    Iterable<Book> search(String query, String field);
 
 }
